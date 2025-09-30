@@ -1,1 +1,5 @@
 # Helm chart values
+installCRDs: true
+global:
+  leaderElection:
+    namespace: cert-manager
