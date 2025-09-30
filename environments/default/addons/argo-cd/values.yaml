@@ -51,19 +51,9 @@ server:
       annotations:
         prometheus.io/scrape: true
   service:
-    type: LoadBalancer
-    annotations:
-      service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
-      service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+    type: ClusterIP
 
 configs:
-  repositories:
-    # Required when using helm repository with oci formal like karpenter and aws-gateway-api-controller
-    aws-public-ecr:
-      name: aws-public-ecr
-      type: helm
-      url: public.ecr.aws
-      enableOCI: 'true'
   cm:
     application.resourceTrackingMethod: 'annotation' #use annotation for tracking required for Crossplane
     resource.exclusions: |
@@ -190,17 +180,6 @@ configs:
           return health_status
 
 
-# -- Array of extra K8s manifests to deploy
-## Note: Supports use of custom Helm templates
-##       It gets handle in this form inside the argo-cd chart
-# {{ range .Values.extraObjects }}
-# ---
-# {{ if typeIs "string" . }}
-#     {{- tpl . $ }}
-# {{- else }}
-#     {{- tpl (toYaml .) $ }}
-# {{- end }}
-# {{ end }}
 extraObjects:
   - |
     apiVersion: argoproj.io/v1alpha1
