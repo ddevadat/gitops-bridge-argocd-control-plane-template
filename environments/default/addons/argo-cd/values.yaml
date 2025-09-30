@@ -21,7 +21,7 @@ repoServer:
       cpu: '200m'
       memory: '512Mi'
   metrics:
-    enabled: false
+    enabled: true
     service:
       annotations:
         prometheus.io/scrape: true
