@@ -61,7 +61,7 @@ spec:
         name: '{{name}}'
       syncPolicy:
         automated:
-          prune: false
+          prune: true
         syncOptions:
           - CreateNamespace=true
           - ServerSideApply=true  # Big CRDs.
