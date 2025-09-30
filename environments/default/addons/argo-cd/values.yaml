@@ -29,7 +29,7 @@ repoServer:
 applicationSet:
   replicaCount: 1 # The controller doesn't scale horizontally, is active-standby replicas
   metrics:
-    enabled: true
+    enabled: false
     service:
       annotations:
         prometheus.io/scrape: true
