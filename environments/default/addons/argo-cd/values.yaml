@@ -46,7 +46,7 @@ server:
       cpu: '200m'
       memory: '512Mi'
   metrics:
-    enabled: true
+    enabled: false
     service:
       annotations:
         prometheus.io/scrape: true
